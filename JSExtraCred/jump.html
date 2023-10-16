@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JUMP BUTTON</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body {
+                margin: 0;
+            }
+
+            form {
+                display: flex;
+                justify-content: center;
+                padding-top: 50px;
+            }
+
+            #leftBox {
+                height: 20px;
+                margin-right: 5px;
+            }
+
+            #rightBox {
+                margin-left: 5px;
+            }
+        </style>
+
+        <script>
+            let indicator = 2;
+
+            function clickHandler(event) {
+                event.preventDefault();
+                let left = document.getElementById("leftBox");
+                let right = document.getElementById("rightBox");
+                let button = document.getElementById("switch");
+
+                if (indicator == 1) {
+                    left.value = right.value;
+                    right.value = "";
+                    indicator = 2;
+                    button.innerText = "JUMP >";
+                } else {
+                    right.value = left.value;
+                    left.value = "";
+                    indicator = 1;
+                    button.innerText = "JUMP <";
+                }
+            }
+
+            window.onload = function() {
+                const button = document.getElementById("switch");
+                button.addEventListener("click", clickHandler);
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="text" id="leftBox">
+            <button id="switch"> JUMP ></button> 
+            <input type="text" id="rightBox">
+        </form>
+        
+    </body>
+</html>
